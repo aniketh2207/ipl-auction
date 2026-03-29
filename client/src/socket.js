@@ -1,6 +1,8 @@
 import { io } from "socket.io-client";
 
-const SERVER_URL = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
+// In production (served from same origin), connect to window.location
+// In dev, connect to the dev server via env variable
+const SERVER_URL = import.meta.env.VITE_SERVER_URL || "";
 
 export const socket = io(SERVER_URL, {
   autoConnect: false, // Connect manually after user creates/joins a room

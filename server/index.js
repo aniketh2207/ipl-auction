@@ -1,5 +1,6 @@
 const express = require("express");
 const http = require("http");
+const path = require("path");
 const { Server } = require("socket.io");
 const cors = require("cors");
 const config = require("./config");
@@ -358,6 +359,16 @@ function advanceAuction(roomId) {
 
   startTimer(roomId);
 }
+
+// ─── Serve static Vue build in production ───────────────────
+
+const clientDist = path.join(__dirname, "..", "client", "dist");
+app.use(express.static(clientDist));
+
+// All non-API routes fall through to Vue's index.html (SPA routing)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(clientDist, "index.html"));
+});
 
 // ─── Start server ────────────────────────────────────────────
 
