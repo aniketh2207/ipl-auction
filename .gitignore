@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build output
+dist/
+**/dist/
+
+# Environment files (never commit real secrets)
+.env
+**/.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python (data cleaning notebook residue)
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Editor
+.vscode/settings.json
